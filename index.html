@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WildGuard | Wildlife Conservation</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f8f2;
+            color: #263238;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #174d32;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #236b45;
+            text-align: center;
+            padding: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #d7f5d0;
+        }
+
+        /* Main */
+        main {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            padding: 50px 20px;
+        }
+
+        section h2 {
+            color: #174d32;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+
+        /* Hero */
+        .hero {
+            background-color: #dcebd8;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .hero img {
+            width: 100%;
+            max-width: 900px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-top: 25px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #236b45;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #174d32;
+        }
+
+        /* Articles */
+        .articles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        article {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .animal-card {
+            width: 30%;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .animal-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .animal-card h3 {
+            color: #236b45;
+            margin: 12px 0;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
+
+        th,
+        td {
+            border: 1px solid #999;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #236b45;
+            color: white;
+        }
+
+        /* Lists */
+        .lists {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        ol,
+        ul,
+        dl {
+            margin: 15px 0 15px 30px;
+        }
+
+        dt {
+            font-weight: bold;
+            color: #236b45;
+        }
+
+        /* Aside */
+        aside {
+            background-color: #dcebd8;
+            padding: 30px;
+            margin: 20px;
+            border-left: 5px solid #236b45;
+        }
+
+        /* Multimedia */
+        .media {
+            text-align: center;
+        }
+
+        .media img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            margin: 15px;
+        }
+
+        audio,
+        video {
+            width: 90%;
+            max-width: 700px;
+            margin: 15px;
+        }
+
+        /* Form */
+        form {
+            max-width: 700px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            margin-top: 5px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 18px;
+            padding: 11px 22px;
+            border: none;
+            background-color: #236b45;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #174d32;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+        }
+
+        .contact a {
+            color: #236b45;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #174d32;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 700px) {
+            header h1 {
+                font-size: 30px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .hero img {
+                height: 250px;
+            }
+
+            .animal-card {
+                width: 100%;
+            }
+
+            table {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Module -->
+    <header id="home">
+        <h1>WildGuard</h1>
+        <p>Wildlife Conservation | Protect Nature | Save Our Future</p>
+    </header>
+
+    <!-- Navigation Module -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#wildlife">Wildlife</a>
+        <a href="#conservation">Conservation</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#join">Join Us</a>
+        <a href="https://www.worldwildlife.org/" target="_blank">
+            WWF
+        </a>
+    </nav>
+
+    <main>
+
+        <!-- Hero Module -->
+        <section class="hero">
+            <h2>Protect Wildlife. Preserve Nature.</h2>
+
+            <p>
+                Welcome to WildGuard, a wildlife conservation platform
+                dedicated to creating awareness about endangered animals,
+                protecting natural habitats, and encouraging people to
+                take action for our planet.
+            </p>
+
+            <a href="#about" class="button">
+                Explore Conservation
+            </a>
+
+            <br>
+
+            <!-- Clickable Image -->
+            <a href="#gallery">
+                <img src="https://images.unsplash.com/photo-1549366021-9f761d450615"
+                     alt="Wild elephant in a natural habitat">
+            </a>
+        </section>
+
+        <!-- About Module -->
+        <section id="about">
+            <h2>About Wildlife Conservation</h2>
+
+            <article>
+                <p>
+                    Wildlife conservation is the practice of protecting
+                    animals, plants, and their natural habitats. Every
+                    species plays an important role in maintaining the
+                    balance of our ecosystem.
+                </p>
+
+                <br>
+
+                <p>
+                    Deforestation, pollution, illegal hunting, climate
+                    change, and habitat destruction are some of the major
+                    threats to wildlife. By protecting nature today,
+                    we can create a better future for coming generations.
+                </p>
+            </article>
+        </section>
+
+        <!-- Wildlife Articles Module -->
+        <section id="wildlife">
+            <h2>Wildlife We Protect</h2>
+
+            <div class="articles">
+
+                <article class="animal-card">
+                    <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5"
+                         alt="Tiger in forest">
+                    <h3>Tiger</h3>
+                    <p>
+                        Tigers are powerful wild cats that need protected
+                        forests and safe habitats to survive.
+                    </p>
+                </article>
+
+                <article class="animal-card">
+                    <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46"
+                         alt="Elephant in nature">
+                    <h3>Elephant</h3>
+                    <p>
+                        Elephants are intelligent animals threatened by
+                        habitat loss and illegal hunting.
+                    </p>
+                </article>
+
+                <article class="animal-card">
+                    <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d"
+                         alt="Lion in wildlife">
+                    <h3>Lion</h3>
+                    <p>
+                        Lions depend on protected grasslands and wildlife
+                        reserves for their survival.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Conservation Module -->
+        <section id="conservation">
+            <h2>Wildlife Conservation Guide</h2>
+
+            <div class="lists">
+
+                <h3>Endangered Wildlife Information</h3>
+
+                <table>
+                    <tr>
+                        <th>Animal</th>
+                        <th>Habitat</th>
+                        <th>Major Threat</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <tr>
+                        <td>Tiger</td>
+                        <td>Forest</td>
+                        <td>Poaching</td>
+                        <td>Endangered</td>
+                    </tr>
+
+                    <tr>
+                        <td>Elephant</td>
+                        <td>Grassland</td>
+                        <td>Habitat Loss</td>
+                        <td>Endangered</td>
+                    </tr>
+
+                    <tr>
+                        <td>Sea Turtle</td>
+                        <td>Ocean</td>
+                        <td>Plastic Pollution</td>
+                        <td>Endangered</td>
+                    </tr>
+
+                    <tr>
+                        <td>Lion</td>
+                        <td>Grassland</td>
+                        <td>Habitat Loss</td>
+                        <td>Vulnerable</td>
+                    </tr>
+                </table>
+
+                <br><br>
+
+                <!-- Ordered Nested List -->
+                <h3>Steps to Protect Wildlife</h3>
+
+                <ol>
+                    <li>Protect Natural Habitats
+                        <ol>
+                            <li>Plant more trees.</li>
+                            <li>Reduce deforestation.</li>
+                        </ol>
+                    </li>
+
+                    <li>Protect Animals
+                        <ol>
+                            <li>Stop illegal hunting.</li>
+                            <li>Support wildlife rescue programs.</li>
+                        </ol>
+                    </li>
+                </ol>
+
+                <!-- Unordered Nested List -->
+                <h3>Ways to Support Conservation</h3>
+
+                <ul>
+                    <li>Spread Awareness
+                        <ul>
+                            <li>Educate your friends and family.</li>
+                            <li>Share wildlife information.</li>
+                        </ul>
+                    </li>
+
+                    <li>Help Nature
+                        <ul>
+                            <li>Reduce plastic usage.</li>
+                            <li>Keep natural areas clean.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Description List -->
+                <h3>Important Terms</h3>
+
+                <dl>
+                    <dt>Endangered Species</dt>
+                    <dd>
+                        A species that is at a high risk of extinction.
+                    </dd>
+
+                    <dt>Habitat</dt>
+                    <dd>
+                        The natural environment where an animal or plant lives.
+                    </dd>
+
+                    <dt>Conservation</dt>
+                    <dd>
+                        The protection and responsible management of nature
+                        and wildlife.
+                    </dd>
+                </dl>
+
+            </div>
+        </section>
+
+        <!-- Aside Module -->
+        <aside>
+            <h3>Did You Know?</h3>
+
+            <p>
+                Protecting wildlife also protects the balance of nature.
+                Every animal has an important role in the ecosystem.
+                Small actions by individuals can create a big impact
+                on wildlife conservation.
+            </p>
+        </aside>
+
+        <!-- Gallery and Multimedia Module -->
+        <section id="gallery" class="media">
+            <h2>Wildlife Gallery</h2>
+
+            <a href="https://www.worldwildlife.org/"
+               target="_blank">
+
+                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801"
+                     alt="Wild animals in nature">
+            </a>
+
+            <p>
+                Click the image to learn more about global wildlife
+                conservation efforts.
+            </p>
+
+            <h3>Wildlife Nature Sounds</h3>
+
+            <audio controls>
+                <source src="audio/wildlife-sound.mp3"
+                        type="audio/mpeg">
+
+                Your browser does not support the audio element.
+            </audio>
+
+            <h3>Wildlife Conservation Video</h3>
+
+            <video controls>
+                <source src="video/wildlife.mp4"
+                        type="video/mp4">
+
+                Your browser does not support the video element.
+            </video>
+        </section>
+
+        <!-- Join Us Form Module -->
+        <section id="join">
+            <h2>Join Our Conservation Community</h2>
+
+            <form action="#" method="post">
+
+                <label for="name">Full Name</label>
+
+                <input type="text"
+                       id="name"
+                       name="name"
+                       placeholder="Enter your full name"
+                       required
+                       minlength="3"
+                       maxlength="50">
+
+                <label for="email">Email Address</label>
+
+                <input type="email"
+                       id="email"
+                       name="email"
+                       placeholder="Enter your email"
+                       required>
+
+                <label for="phone">Phone Number</label>
+
+                <input type="tel"
+                       id="phone"
+                       name="phone"
+                       placeholder="Enter 10-digit phone number"
+                       pattern="[0-9]{10}"
+                       required>
+
+                <label for="date">Volunteer Date</label>
+
+                <input type="date"
+                       id="date"
+                       name="date"
+                       required>
+
+                <label for="members">Number of Members</label>
+
+                <input type="number"
+                       id="members"
+                       name="members"
+                       min="1"
+                       max="20"
+                       required>
+
+                <label for="animal">Favorite Animal</label>
+
+                <select id="animal"
+                        name="animal"
+                        required>
+
+                    <option value="">Select an animal</option>
+                    <option value="tiger">Tiger</option>
+                    <option value="elephant">Elephant</option>
+                    <option value="lion">Lion</option>
+                    <option value="turtle">Sea Turtle</option>
+
+                </select>
+
+                <label for="message">
+                    Why do you want to support wildlife?
+                </label>
+
+                <textarea id="message"
+                          name="message"
+                          placeholder="Write your message"
+                          minlength="10"
+                          maxlength="300"
+                          required></textarea>
+
+                <button type="submit">
+                    Submit
+                </button>
+
+                <button type="reset">
+                    Reset
+                </button>
+
+            </form>
+        </section>
+
+        <!-- Contact Module -->
+        <section class="contact">
+
+            <h2>Contact WildGuard</h2>
+
+            <p>
+                Email:
+                <a href="mailto:wildguard@example.com">
+                    wildguard@example.com
+                </a>
+            </p>
+
+            <p>
+                Phone:
+                <a href="tel:+919876543210">
+                    +91 98765 43210
+                </a>
+            </p>
+
+            <br>
+
+            <a href="#home">
+                Back to Top
+            </a>
+
+        </section>
+
+    </main>
+
+    <!-- Footer Module -->
+    <footer>
+
+        <p>
+            © 2026 WildGuard Wildlife Conservation
+        </p>
+
+        <p>
+            Done By: ALLEN SUVISESH C
+        </p>
+
+        <p>
+            URK24CS1186
+        </p>
+
+        <p>
+            EXERCISE NO: 1 - WILDLIFE CONSERVATION SITE
+        </p>
+
+    </footer>
+
+</body>
+</html>
