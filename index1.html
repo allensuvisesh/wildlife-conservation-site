@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wildlife Conservation Volunteer Registration</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80") no-repeat center center/cover;
+    min-height:100vh;
+}
+
+.overlay{
+    background:rgba(0,0,0,0.55);
+    min-height:100vh;
+    padding:40px;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    background:rgba(255,255,255,0.95);
+    padding:30px;
+    border-radius:12px;
+}
+
+h1{
+    text-align:center;
+    color:#1B5E20;
+    margin-bottom:10px;
+}
+
+p{
+    text-align:center;
+    margin-bottom:25px;
+    color:#444;
+}
+
+label{
+    font-weight:bold;
+    color:#1B5E20;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:10px;
+    margin-top:6px;
+    margin-bottom:18px;
+    border:1px solid #999;
+    border-radius:5px;
+    font-size:15px;
+}
+
+.radio-group,
+.checkbox-group{
+    margin:10px 0 20px;
+}
+
+.radio-group label,
+.checkbox-group label{
+    font-weight:normal;
+    color:#000;
+    margin-right:15px;
+}
+
+input[type="radio"],
+input[type="checkbox"]{
+    width:auto;
+    margin-right:5px;
+}
+
+input[type="color"]{
+    width:80px;
+    height:45px;
+    padding:2px;
+}
+
+input[type="range"]{
+    width:100%;
+}
+
+.buttons{
+    text-align:center;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+    margin:10px;
+}
+
+.submit{
+    background:#2E7D32;
+    color:white;
+}
+
+.reset{
+    background:#C62828;
+    color:white;
+}
+
+button:hover{
+    opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="container">
+
+<h1>🌿 Wildlife Conservation Volunteer Registration</h1>
+
+<p>Join us in protecting wildlife and preserving nature for future generations.</p>
+
+<form>
+
+<label>Full Name</label>
+<input type="text" placeholder="Enter your full name"
+required pattern="[A-Za-z ]{3,30}">
+
+<label>Email Address</label>
+<input type="email"
+placeholder="example@email.com"
+required>
+
+<label>Password</label>
+<input type="password"
+placeholder="Create password"
+required
+pattern=".{6,}">
+
+<label>Age</label>
+<input type="number"
+min="18"
+max="60"
+required>
+
+<label>Date of Birth</label>
+<input type="date" required>
+
+<label>Gender</label>
+
+<div class="radio-group">
+<input type="radio" name="gender" required> Male
+<input type="radio" name="gender"> Female
+<input type="radio" name="gender"> Other
+</div>
+
+<label>Wildlife Interests</label>
+
+<div class="checkbox-group">
+<input type="checkbox"> Tigers
+<input type="checkbox"> Elephants
+<input type="checkbox"> Birds
+<input type="checkbox"> Marine Life
+</div>
+
+<label>Preferred Conservation Program</label>
+
+<select required>
+<option value="">--Select Program--</option>
+<option>Forest Protection</option>
+<option>Wildlife Rescue</option>
+<option>Tree Plantation</option>
+<option>Beach Cleanup</option>
+</select>
+
+<label>Why do you want to volunteer?</label>
+
+<textarea rows="5"
+placeholder="Write your reason here..."
+required></textarea>
+
+<label>Favorite Nature Color</label>
+<input type="color">
+
+<label>Upload Your Photo / ID</label>
+<input type="file">
+
+<label>Experience Level (0-100)</label>
+<input type="range"
+min="0"
+max="100"
+value="50">
+
+<div class="buttons">
+<button type="submit" class="submit">Submit</button>
+<button type="reset" class="reset">Reset</button>
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>
