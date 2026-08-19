@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>WildGuard | Wildlife Conservation</title>
+
+<style>
+
+/* =====================================================
+   GENERAL CSS
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f8f2;
+    color:#263238;
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+    background-color:#174d32;
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+header h1{
+    font-size:42px;
+    margin-bottom:8px;
+}
+
+header p{
+    font-size:18px;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+nav{
+    background-color:#236b45;
+    text-align:center;
+    padding:14px;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 12px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#d7f5d0;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main{
+    max-width:1100px;
+    margin:auto;
+}
+
+section{
+    padding:50px 20px;
+}
+
+section h2{
+    color:#174d32;
+    text-align:center;
+    margin-bottom:20px;
+    font-size:30px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    background:#dcebd8;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero h2{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:750px;
+    margin:auto;
+}
+
+.hero img{
+    width:100%;
+    max-width:900px;
+    height:350px;
+    object-fit:cover;
+
+    /* EX 4 - Rounded Corners */
+    border-radius:25px;
+
+    margin-top:25px;
+}
+
+.button{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 24px;
+
+    background-color:#236b45;
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:5px;
+}
+
+.button:hover{
+    background-color:#174d32;
+}
+
+
+/* =====================================================
+   ARTICLES / ANIMAL CARDS
+===================================================== */
+
+.articles{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+}
+
+article{
+    background:white;
+    padding:20px;
+
+    border-radius:10px;
+
+    box-shadow:
+    0 3px 10px rgba(0,0,0,0.1);
+}
+
+.animal-card{
+    width:30%;
+    min-width:250px;
+    text-align:center;
+}
+
+.animal-card img{
+    width:100%;
+    height:200px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+}
+
+.animal-card h3{
+    color:#236b45;
+    margin:12px 0;
+}
+
+
+/* =====================================================
+   EX 4 - 1. ROUNDED CORNERS
+===================================================== */
+
+.rounded-box{
+
+    width:100%;
+
+    padding:25px;
+
+    margin:20px 0;
+
+    background:#d8f3dc;
+
+    border:3px solid #2e8b57;
+
+    /*
+       top-left     = 15px
+       top-right    = 50px
+       bottom-right = 30px
+       bottom-left  = 5px
+    */
+
+    border-radius:15px 50px 30px 5px;
+
+    text-align:center;
+}
+
+
+/* =====================================================
+   EX 4 - 2. BORDER IMAGE
+===================================================== */
+
+.border-img-box{
+
+    width:100%;
+
+    padding:25px;
+
+    margin:20px 0;
+
+    border:20px solid transparent;
+
+    border-image:
+    url("https://www.w3schools.com/cssref/border.png")
+    30 round;
+
+    background:white;
+
+    text-align:center;
+}
+
+
+/* =====================================================
+   EX 4 - 3. MULTIPLE BACKGROUNDS
+===================================================== */
+
+#multipleBackground{
+
+    width:100%;
+
+    height:280px;
+
+    margin:20px 0;
+
+    border:3px solid #236b45;
+
+    padding:30px;
+
+    /*
+       First background = animal image
+       Second background = texture
+    */
+
+    background-image:
+
+    url("https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=600&q=80"),
+
+    url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png");
+
+    background-position:
+
+    right bottom,
+    left top;
+
+    background-repeat:
+
+    no-repeat,
+    repeat;
+
+    background-size:
+
+    350px 230px,
+    auto;
+
+    border-radius:15px;
+
+}
+
+
+/* =====================================================
+   EX 4 - 4. BACKGROUND SIZE
+===================================================== */
+
+#backgroundSize{
+
+    width:100%;
+
+    height:250px;
+
+    margin:20px 0;
+
+    border:3px solid #236b45;
+
+    background-image:
+    url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80");
+
+    /*
+       cover makes the image cover
+       the complete element
+    */
+
+    background-size:cover;
+
+    background-position:center;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    text-shadow:2px 2px 5px black;
+
+    border-radius:15px;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    background:white;
+}
+
+th,
+td{
+    border:1px solid #999;
+    padding:12px;
+    text-align:center;
+}
+
+th{
+    background-color:#236b45;
+    color:white;
+}
+
+
+/* =====================================================
+   EX 4 - 7. NTH CHILD
+===================================================== */
+
+#stripedTable tr:nth-child(odd){
+
+    background-color:#eeeeee;
+
+}
+
+#stripedTable tr:nth-child(even){
+
+    background-color:#d8f3dc;
+
+}
+
+#stripedTable tr:hover{
+
+    background-color:#ffd966;
+
+    cursor:pointer;
+
+}
+
+
+/* =====================================================
+   LISTS
+===================================================== */
+
+.lists{
+
+    background:white;
+
+    border-radius:10px;
+
+    padding:25px;
+
+    margin-top:25px;
+}
+
+ol,
+ul,
+dl{
+
+    margin:15px 0 15px 30px;
+
+}
+
+dt{
+
+    font-weight:bold;
+
+    color:#236b45;
+
+}
+
+
+/* =====================================================
+   ASIDE
+===================================================== */
+
+aside{
+
+    background:#dcebd8;
+
+    padding:30px;
+
+    margin:20px;
+
+    border-left:5px solid #236b45;
+
+}
+
+
+/* =====================================================
+   MULTIMEDIA
+===================================================== */
+
+.media{
+
+    text-align:center;
+
+}
+
+.media img{
+
+    width:100%;
+
+    max-width:600px;
+
+    border-radius:10px;
+
+    margin:15px;
+
+}
+
+audio,
+video{
+
+    width:90%;
+
+    max-width:700px;
+
+    margin:15px;
+
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+form{
+
+    max-width:700px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:10px;
+
+    box-shadow:
+    0 3px 10px rgba(0,0,0,0.1);
+}
+
+label{
+
+    display:block;
+
+    margin-top:15px;
+
+    font-weight:bold;
+
+}
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:11px;
+
+    margin-top:5px;
+
+    border:1px solid #aaa;
+
+    border-radius:5px;
+
+}
+
+textarea{
+
+    height:100px;
+
+    resize:vertical;
+
+}
+
+
+/* =====================================================
+   EX 4 - 5. PSEUDO CLASSES
+===================================================== */
+
+
+/* Focus */
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    border:3px solid red;
+
+    background:#e9ffe9;
+
+    outline:none;
+}
+
+
+/* Required */
+
+input:required,
+select:required,
+textarea:required{
+
+    border-left:4px solid blue;
+
+}
+
+
+/* Valid Email */
+
+input[type="email"]:valid{
+
+    color:blue;
+
+    background:#e8f5e9;
+
+}
+
+
+/* Invalid Email */
+
+input[type="email"]:invalid{
+
+    color:red;
+
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+button{
+
+    margin-top:18px;
+
+    padding:11px 22px;
+
+    border:none;
+
+    background:#236b45;
+
+    color:white;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+}
+
+button:hover{
+
+    background:#174d32;
+
+}
+
+
+/* =====================================================
+   EX 4 - 6. ADJACENT SIBLING
+===================================================== */
+
+.animal-hover-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+
+}
+
+.animal-hover-table td{
+
+    border:1px solid #999;
+
+    padding:15px;
+
+    text-align:center;
+
+}
+
+
+/* Image is faded */
+
+.itemImg{
+
+    opacity:0.2;
+
+    transition:opacity 0.5s ease;
+
+}
+
+
+/*
+   Adjacent sibling selector (+)
+
+   When itemName is hovered,
+   its immediately following
+   itemImg becomes visible.
+*/
+
+.itemName:hover + .itemImg{
+
+    opacity:1;
+
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact{
+
+    text-align:center;
+
+}
+
+.contact a{
+
+    color:#236b45;
+
+    font-weight:bold;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    background:#174d32;
+
+    color:white;
+
+    text-align:center;
+
+    padding:25px;
+
+    margin-top:20px;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+
+/* TABLET */
+
+@media screen and (max-width:992px){
+
+    .animal-card{
+
+        width:45%;
+
+    }
+
+    .hero h2{
+
+        font-size:32px;
+
+    }
+
+}
+
+
+/* MOBILE */
+
+@media screen and (max-width:768px){
+
+    header h1{
+
+        font-size:30px;
+
+    }
+
+    nav a{
+
+        display:inline-block;
+
+        margin:5px;
+
+    }
+
+    .animal-card{
+
+        width:100%;
+
+    }
+
+    .hero{
+
+        padding:30px 15px;
+
+    }
+
+    .hero h2{
+
+        font-size:28px;
+
+    }
+
+    .hero img{
+
+        height:250px;
+
+    }
+
+    #multipleBackground{
+
+        height:350px;
+
+    }
+
+}
+
+
+/* SMALL MOBILE */
+
+@media screen and (max-width:480px){
+
+    header h1{
+
+        font-size:24px;
+
+    }
+
+    section{
+
+        padding:30px 10px;
+
+    }
+
+    button{
+
+        width:100%;
+
+    }
+
+    #backgroundSize{
+
+        font-size:22px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header id="home">
+
+    <h1>🌿 WildGuard</h1>
+
+    <p>
+        Wildlife Conservation |
+        Protect Nature |
+        Save Our Future
+    </p>
+
+</header>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav>
+
+    <a href="#home">Home</a>
+
+    <a href="#about">About</a>
+
+    <a href="#wildlife">Wildlife</a>
+
+    <a href="#conservation">Conservation</a>
+
+    <a href="#advanced">Advanced CSS3</a>
+
+    <a href="#gallery">Gallery</a>
+
+    <a href="#join">Join Us</a>
+
+</nav>
+
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <h2>
+        Protect Wildlife. Preserve Nature.
+    </h2>
+
+    <p>
+
+        Welcome to WildGuard, a wildlife conservation
+        platform dedicated to creating awareness about
+        endangered animals, protecting natural habitats,
+        and encouraging people to take action for our planet.
+
+    </p>
+
+    <a href="#about" class="button">
+
+        Explore Conservation
+
+    </a>
+
+    <br>
+
+    <a href="#gallery">
+
+        <img
+        src="https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=900&q=80"
+        alt="Wild elephant in natural habitat">
+
+    </a>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section id="about">
+
+    <h2>
+        About Wildlife Conservation
+    </h2>
+
+    <article>
+
+        <p>
+
+            Wildlife conservation is the practice of
+            protecting animals, plants, and their natural
+            habitats.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Deforestation, pollution, illegal hunting,
+            climate change, and habitat destruction are
+            major threats to wildlife.
+
+        </p>
+
+    </article>
+
+</section>
+
+
+<!-- =====================================================
+     WILDLIFE
+===================================================== -->
+
+<section id="wildlife">
+
+    <h2>
+        Wildlife We Protect
+    </h2>
+
+    <div class="articles">
+
+
+        <article class="animal-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=600&q=80"
+            alt="Tiger">
+
+            <h3>Tiger</h3>
+
+            <p>
+
+                Tigers need protected forests and safe
+                habitats to survive.
+
+            </p>
+
+        </article>
+
+
+        <article class="animal-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=600&q=80"
+            alt="Elephant">
+
+            <h3>Elephant</h3>
+
+            <p>
+
+                Elephants are intelligent animals threatened
+                by habitat loss and illegal hunting.
+
+            </p>
+
+        </article>
+
+
+        <article class="animal-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=600&q=80"
+            alt="Lion">
+
+            <h3>Lion</h3>
+
+            <p>
+
+                Lions depend on protected grasslands and
+                wildlife reserves.
+
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONSERVATION
+===================================================== -->
+
+<section id="conservation">
+
+    <h2>
+        Wildlife Conservation Guide
+    </h2>
+
+    <div class="lists">
+
+
+        <h3>
+            Endangered Wildlife Information
+        </h3>
+
+
+        <table id="stripedTable">
+
+            <tr>
+
+                <th>Animal</th>
+
+                <th>Habitat</th>
+
+                <th>Major Threat</th>
+
+                <th>Status</th>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Tiger</td>
+
+                <td>Forest</td>
+
+                <td>Poaching</td>
+
+                <td>Endangered</td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Elephant</td>
+
+                <td>Grassland</td>
+
+                <td>Habitat Loss</td>
+
+                <td>Endangered</td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Sea Turtle</td>
+
+                <td>Ocean</td>
+
+                <td>Plastic Pollution</td>
+
+                <td>Endangered</td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Lion</td>
+
+                <td>Grassland</td>
+
+                <td>Habitat Loss</td>
+
+                <td>Vulnerable</td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>Rhino</td>
+
+                <td>Grassland</td>
+
+                <td>Illegal Hunting</td>
+
+                <td>Endangered</td>
+
+            </tr>
+
+        </table>
+
+
+        <br><br>
+
+
+        <h3>
+            Steps to Protect Wildlife
+        </h3>
+
+
+        <ol>
+
+            <li>
+
+                Protect Natural Habitats
+
+                <ol>
+
+                    <li>
+                        Plant more trees.
+                    </li>
+
+                    <li>
+                        Reduce deforestation.
+                    </li>
+
+                </ol>
+
+            </li>
+
+
+            <li>
+
+                Protect Animals
+
+                <ol>
+
+                    <li>
+                        Stop illegal hunting.
+                    </li>
+
+                    <li>
+                        Support wildlife rescue programs.
+                    </li>
+
+                </ol>
+
+            </li>
+
+        </ol>
+
+
+        <h3>
+            Important Terms
+        </h3>
+
+
+        <dl>
+
+            <dt>
+                Endangered Species
+            </dt>
+
+            <dd>
+                A species that is at a high risk of extinction.
+            </dd>
+
+
+            <dt>
+                Habitat
+            </dt>
+
+            <dd>
+                The natural environment where an animal or
+                plant lives.
+            </dd>
+
+
+            <dt>
+                Conservation
+            </dt>
+
+            <dd>
+                The protection and responsible management
+                of nature and wildlife.
+            </dd>
+
+        </dl>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EX 4 ADVANCED CSS3
+===================================================== -->
+
+<section id="advanced">
+
+    <h2>
+        Advanced CSS3 Demonstration
+    </h2>
+
+
+    <!-- 1 ROUNDED CORNERS -->
+
+    <h3>
+        1. Rounded Corners
+    </h3>
+
+    <div class="rounded-box">
+
+        <h3>
+            🌳 Wildlife Habitat
+        </h3>
+
+        <p>
+
+            This box uses the CSS
+            <b>border-radius</b> property with
+            four different corner values.
+
+        </p>
+
+    </div>
+
+
+    <!-- 2 BORDER IMAGE -->
+
+    <h3>
+        2. Border Image
+    </h3>
+
+    <div class="border-img-box">
+
+        <h3>
+            🐅 Protect Endangered Animals
+        </h3>
+
+        <p>
+
+            This section demonstrates the
+            CSS <b>border-image</b> property.
+
+        </p>
+
+    </div>
+
+
+    <!-- 3 MULTIPLE BACKGROUNDS -->
+
+    <h3>
+        3. Multiple Backgrounds
+    </h3>
+
+    <div id="multipleBackground">
+
+        <h3>
+            🐘 Wildlife Habitat
+        </h3>
+
+        <p>
+
+            This section uses two background images
+            at the same time.
+
+        </p>
+
+    </div>
+
+
+    <!-- 4 BACKGROUND SIZE -->
+
+    <h3>
+        4. Background Size
+    </h3>
+
+    <div id="backgroundSize">
+
+        🌳 SAVE OUR FORESTS 🌳
+
+    </div>
+
+
+    <!-- 5 PSEUDO CLASSES -->
+
+    <h3>
+        5. Pseudo Classes
+    </h3>
+
+    <form>
+
+        <label>
+            Name
+        </label>
+
+        <input
+        type="text"
+        placeholder="Enter your name"
+        required>
+
+
+        <label>
+            Email
+        </label>
+
+        <input
+        type="email"
+        placeholder="name@example.com"
+        required>
+
+
+        <button type="submit">
+            Submit
+        </button>
+
+    </form>
+
+
+    <!-- 6 ADJACENT SIBLING -->
+
+    <h3 style="margin-top:40px;">
+
+        6. Adjacent Sibling Selector
+
+    </h3>
+
+
+    <p style="text-align:center;">
+
+        Hover over the animal name to reveal
+        the image.
+
+    </p>
+
+
+    <table class="animal-hover-table">
+
+
+        <tr>
+
+            <td class="itemName">
+                🐘 Elephant
+            </td>
+
+            <td class="itemImg">
+
+                <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7uioOiIiVZt6l8rw0StTeN4mZ8qFm4Svz6k2o3ARAlQ&s=10"
+                width="100"
+                alt="Elephant">
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td class="itemName">
+                🦁 Lion
+            </td>
+
+            <td class="itemImg">
+
+                <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC8wyROv8LC3QGuSvd8Z3nnym0Fo-7o_cRWr68slDu0Q&s=10"
+                width="100"
+                alt="Lion">
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td class="itemName">
+                🐅 Tiger
+            </td>
+
+            <td class="itemImg">
+
+                <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS31GuNGFTlQM3YI4ozi9g-UJ8_oJYnRo3ovZ0QRWj90Q&s=10"
+                width="100"
+                alt="Tiger">
+
+            </td>
+
+        </tr>
+
+
+    </table>
+
+
+    <!-- 7 NTH CHILD -->
+
+    <h3 style="margin-top:40px;">
+
+        7. nth-child(odd) / nth-child(even)
+
+    </h3>
+
+
+    <p style="text-align:center;">
+
+        The rows alternate colors.
+        Hover over a row to see the effect.
+
+    </p>
+
+
+    <table id="stripedTable">
+
+        <tr>
+            <td>Tiger</td>
+            <td>Endangered</td>
+        </tr>
+
+        <tr>
+            <td>Elephant</td>
+            <td>Endangered</td>
+        </tr>
+
+        <tr>
+            <td>Lion</td>
+            <td>Vulnerable</td>
+        </tr>
+
+        <tr>
+            <td>Rhino</td>
+            <td>Endangered</td>
+        </tr>
+
+        <tr>
+            <td>Sea Turtle</td>
+            <td>Endangered</td>
+        </tr>
+
+        <tr>
+            <td>Deer</td>
+            <td>Protected</td>
+        </tr>
+
+    </table>
+
+
+</section>
+
+
+<!-- =====================================================
+     ASIDE
+===================================================== -->
+
+<aside>
+
+    <h3>
+        💡 Did You Know?
+    </h3>
+
+    <p>
+
+        Protecting wildlife also protects the balance
+        of nature. Every animal has an important role
+        in the ecosystem.
+
+    </p>
+
+</aside>
+
+
+<!-- =====================================================
+     GALLERY
+===================================================== -->
+
+<section id="gallery" class="media">
+
+    <h2>
+        Wildlife Gallery
+    </h2>
+
+
+    <a
+    href="https://www.worldwildlife.org/"
+    target="_blank">
+
+        <img
+        src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80"
+        alt="Wild animals in nature">
+
+    </a>
+
+
+    <p>
+
+        Click the image to learn more about
+        wildlife conservation.
+
+    </p>
+
+
+    <h3>
+        Wildlife Nature Sounds
+    </h3>
+
+    <audio controls>
+
+        <source
+        src="audio/wildlife-sound.mp3"
+        type="audio/mpeg">
+
+        Your browser does not support audio.
+
+    </audio>
+
+
+    <h3>
+        Wildlife Conservation Video
+    </h3>
+
+    <video controls>
+
+        <source
+        src="video/wildlife.mp4"
+        type="video/mp4">
+
+        Your browser does not support video.
+
+    </video>
+
+</section>
+
+
+<!-- =====================================================
+     JOIN FORM
+===================================================== -->
+
+<section id="join">
+
+    <h2>
+        Join Our Conservation Community
+    </h2>
+
+
+    <form
+    action="#"
+    method="post">
+
+
+        <label for="name">
+            Full Name
+        </label>
+
+        <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Enter your full name"
+        required
+        minlength="3"
+        maxlength="50">
+
+
+        <label for="email">
+            Email Address
+        </label>
+
+        <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your email"
+        required>
+
+
+        <label for="phone">
+            Phone Number
+        </label>
+
+        <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="Enter 10-digit phone number"
+        pattern="[0-9]{10}"
+        required>
+
+
+        <label for="date">
+            Volunteer Date
+        </label>
+
+        <input
+        type="date"
+        id="date"
+        name="date"
+        required>
+
+
+        <label for="members">
+            Number of Members
+        </label>
+
+        <input
+        type="number"
+        id="members"
+        name="members"
+        min="1"
+        max="20"
+        required>
+
+
+        <label for="animal">
+            Favorite Animal
+        </label>
+
+        <select
+        id="animal"
+        name="animal"
+        required>
+
+            <option value="">
+                Select an animal
+            </option>
+
+            <option value="tiger">
+                Tiger
+            </option>
+
+            <option value="elephant">
+                Elephant
+            </option>
+
+            <option value="lion">
+                Lion
+            </option>
+
+            <option value="turtle">
+                Sea Turtle
+            </option>
+
+        </select>
+
+
+        <label for="message">
+
+            Why do you want to support wildlife?
+
+        </label>
+
+        <textarea
+        id="message"
+        name="message"
+        placeholder="Write your message"
+        minlength="10"
+        maxlength="300"
+        required></textarea>
+
+
+        <button type="submit">
+            Submit
+        </button>
+
+        <button type="reset">
+            Reset
+        </button>
+
+
+    </form>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="contact">
+
+    <h2>
+        Contact WildGuard
+    </h2>
+
+
+    <p>
+
+        Email:
+
+        <a href="mailto:wildguard@example.com">
+
+            wildguard@example.com
+
+        </a>
+
+    </p>
+
+
+    <p>
+
+        Phone:
+
+        <a href="tel:+919876543210">
+
+            +91 98765 43210
+
+        </a>
+
+    </p>
+
+
+    <br>
+
+
+    <a href="#home">
+
+        Back to Top
+
+    </a>
+
+</section>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+        © 2026 WildGuard Wildlife Conservation
+    </p>
+
+    <p>
+        Done By: ALLEN SUVISESH C
+    </p>
+
+    <p>
+        URK24CS1186
+    </p>
+
+    <p>
+        EXERCISE NO: 1, 2, 3 & 4
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
