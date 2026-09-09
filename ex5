@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wildlife Conservation Site</title>
+
+    <style>
+
+        /* =========================================
+           GENERAL STYLING
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f2;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        header {
+            background-color: #1b4332;
+            color: white;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #d8f3dc;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #95d5b2;
+        }
+
+        /* =========================================
+           HERO SECTION
+        ========================================= */
+
+        .hero {
+            height: 550px;
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.45),
+                rgba(0, 0, 0, 0.45)),
+                url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #40916c;
+            color: white;
+            padding: 13px 28px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1b4332;
+            transform: scale(1.05);
+        }
+
+        /* =========================================
+           SECTION GENERAL
+        ========================================= */
+
+        section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 35px;
+            color: #1b4332;
+            margin-bottom: 20px;
+        }
+
+        .section-text {
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+            font-size: 17px;
+        }
+
+        /* =========================================
+           ABOUT SECTION
+        ========================================= */
+
+        .about {
+            background-color: white;
+        }
+
+        .about-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .about-container img {
+            width: 50%;
+            border-radius: 20px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h3 {
+            color: #2d6a4f;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+        }
+
+        /* =========================================
+           ANIMALS SECTION
+        ========================================= */
+
+        .animals {
+            background-color: #e9f5db;
+        }
+
+        .animal-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .animal-card {
+            width: 260px;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            transition: 0.4s;
+        }
+
+        .animal-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .animal-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .animal-card h3 {
+            color: #1b4332;
+            padding: 15px 15px 5px;
+        }
+
+        .animal-card p {
+            padding: 5px 15px 20px;
+        }
+
+        /* =========================================
+           PROGRAMS SECTION
+        ========================================= */
+
+        .programs {
+            background-color: white;
+        }
+
+        .program-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .program-box {
+            background-color: #2d6a4f;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .program-box:hover {
+            background-color: #1b4332;
+            transform: scale(1.03);
+        }
+
+        .program-box h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        /* =========================================
+           FACTS SECTION
+        ========================================= */
+
+        .facts {
+            background:
+                linear-gradient(rgba(27, 67, 50, 0.9),
+                rgba(27, 67, 50, 0.9)),
+                url("https://images.unsplash.com/photo-1473445361085-b9a07f55608b?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .facts h2 {
+            color: white;
+        }
+
+        .facts-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .fact-box h3 {
+            font-size: 45px;
+            color: #95d5b2;
+        }
+
+        .fact-box p {
+            font-size: 17px;
+        }
+
+        /* =========================================
+           VOLUNTEER SECTION
+        ========================================= */
+
+        .volunteer {
+            background-color: #e9f5db;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 35px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #aaa;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #40916c;
+        }
+
+        textarea {
+            resize: none;
+            height: 120px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #2d6a4f;
+            color: white;
+            padding: 13px;
+            border: none;
+            border-radius: 25px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #1b4332;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            background-color: #081c15;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+
+        @media(max-width: 900px) {
+
+            .about-container {
+                flex-direction: column;
+            }
+
+            .about-container img {
+                width: 100%;
+            }
+
+            .program-container {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media(max-width: 768px) {
+
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 50px 5%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+    <div class="logo">
+        🌿 Wildlife Conservation
+    </div>
+
+    <nav>
+
+        <ul>
+
+            <li><a href="#home">Home</a></li>
+
+            <li><a href="#about">About</a></li>
+
+            <li><a href="#animals">Animals</a></li>
+
+            <li><a href="#programs">Programs</a></li>
+
+            <li><a href="#volunteer">Volunteer</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================================
+     HOME SECTION
+========================================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>Protect Wildlife. Preserve Nature.</h1>
+
+        <p>
+            Together we can protect endangered animals,
+            conserve forests, and create a safer future
+            for our planet.
+        </p>
+
+        <a href="#about" class="btn">
+            Explore Wildlife
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     ABOUT SECTION
+========================================= -->
+
+<section class="about" id="about">
+
+    <h2 class="section-title">
+        About Wildlife Conservation
+    </h2>
+
+
+    <div class="about-container">
+
+
+        <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=80"
+             alt="Wildlife Forest">
+
+
+        <div class="about-content">
+
+            <h3>Protecting Nature for Future Generations</h3>
+
+            <p>
+                Wildlife conservation is the practice of protecting
+                animals, plants, and their natural habitats.
+                Many species around the world are threatened due to
+                habitat destruction, pollution, climate change,
+                and illegal hunting.
+            </p>
+
+            <p>
+                Our mission is to create awareness and encourage
+                people to participate in protecting biodiversity.
+                Every small action can help preserve nature.
+            </p>
+
+            <a href="#animals" class="btn">
+                Meet the Animals
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     ANIMALS SECTION
+========================================= -->
+
+<section class="animals" id="animals">
+
+
+    <h2 class="section-title">
+        Featured Wildlife
+    </h2>
+
+
+    <p class="section-text">
+
+        Discover some of the amazing animals that need
+        protection and conservation.
+
+    </p>
+
+
+
+    <div class="animal-container">
+
+
+        <!-- TIGER -->
+
+        <div class="animal-card">
+
+            <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=800&q=80"
+                 alt="Tiger">
+
+            <h3>🐯 Bengal Tiger</h3>
+
+            <p>
+                Tigers are among the world's most powerful
+                predators and require protection from habitat loss
+                and illegal hunting.
+            </p>
+
+        </div>
+
+
+
+        <!-- ELEPHANT -->
+
+        <div class="animal-card">
+
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=800&q=80"
+                 alt="Elephant">
+
+            <h3>🐘 Asian Elephant</h3>
+
+            <p>
+                Elephants play an important role in maintaining
+                forest ecosystems and biodiversity.
+            </p>
+
+        </div>
+
+
+
+        <!-- PANDA -->
+
+        <div class="animal-card">
+
+            <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1d2b?auto=format&fit=crop&w=800&q=80"
+                 alt="Panda">
+
+            <h3>🐼 Giant Panda</h3>
+
+            <p>
+                Pandas depend on healthy forests and bamboo
+                ecosystems for survival.
+            </p>
+
+        </div>
+
+
+
+        <!-- LION -->
+
+        <div class="animal-card">
+
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80"
+                 alt="Lion">
+
+            <h3>🦁 African Lion</h3>
+
+            <p>
+                Lions are an important part of the ecosystem
+                and need protection from habitat destruction.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     CONSERVATION PROGRAMS
+========================================= -->
+
+<section class="programs" id="programs">
+
+
+    <h2 class="section-title">
+
+        Our Conservation Programs
+
+    </h2>
+
+
+    <p class="section-text">
+
+        We work towards protecting wildlife through
+        different environmental programs.
+
+    </p>
+
+
+
+    <div class="program-container">
+
+
+        <div class="program-box">
+
+            <h3>🌳 Forest Protection</h3>
+
+            <p>
+
+                Protecting forests and restoring damaged
+                ecosystems to provide safe habitats for wildlife.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="program-box">
+
+            <h3>🦁 Animal Rescue</h3>
+
+            <p>
+
+                Supporting rescue and rehabilitation programs
+                for injured and endangered animals.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="program-box">
+
+            <h3>🌍 Environmental Awareness</h3>
+
+            <p>
+
+                Educating communities about biodiversity,
+                sustainability, and wildlife protection.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     FACTS SECTION
+========================================= -->
+
+<section class="facts">
+
+
+    <h2 class="section-title">
+
+        Together We Can Make a Difference
+
+    </h2>
+
+
+
+    <div class="facts-container">
+
+
+        <div class="fact-box">
+
+            <h3>100+</h3>
+
+            <p>Animals Protected</p>
+
+        </div>
+
+
+
+        <div class="fact-box">
+
+            <h3>50+</h3>
+
+            <p>Volunteers</p>
+
+        </div>
+
+
+
+        <div class="fact-box">
+
+            <h3>25+</h3>
+
+            <p>Conservation Projects</p>
+
+        </div>
+
+
+
+        <div class="fact-box">
+
+            <h3>10+</h3>
+
+            <p>Protected Forest Areas</p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================
+     VOLUNTEER SECTION
+========================================= -->
+
+<section class="volunteer" id="volunteer">
+
+
+    <h2 class="section-title">
+
+        Become a Volunteer
+
+    </h2>
+
+
+    <p class="section-text">
+
+        Join us and become a part of our mission
+        to protect wildlife and nature.
+
+    </p>
+
+
+
+    <form id="volunteerForm">
+
+
+        <input type="text"
+               id="name"
+               placeholder="Enter your full name"
+               required>
+
+
+
+        <input type="email"
+               id="email"
+               placeholder="Enter your email address"
+               required>
+
+
+
+        <select id="interest" required>
+
+            <option value="">
+                Select your interest
+            </option>
+
+            <option>
+                Wildlife Protection
+            </option>
+
+            <option>
+                Animal Rescue
+            </option>
+
+            <option>
+                Forest Conservation
+            </option>
+
+            <option>
+                Environmental Awareness
+            </option>
+
+        </select>
+
+
+
+        <textarea
+            id="message"
+            placeholder="Why do you want to become a volunteer?"
+            required>
+        </textarea>
+
+
+
+        <button type="submit">
+
+            Join Our Mission
+
+        </button>
+
+
+    </form>
+
+
+</section>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <p>
+
+        🌿 Wildlife Conservation Site
+
+    </p>
+
+
+    <p>
+
+        Protect Wildlife • Save Forests • Preserve Nature
+
+    </p>
+
+
+    <p>
+
+        © 2026 Wildlife Conservation.
+        All Rights Reserved.
+
+    </p>
+
+</footer>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+
+    document
+        .getElementById("volunteerForm")
+        .addEventListener("submit", function(event) {
+
+
+            event.preventDefault();
+
+
+            let name =
+                document.getElementById("name").value;
+
+
+            alert(
+                "Thank you " + name +
+                "! You have successfully joined our wildlife conservation mission."
+            );
+
+
+            document
+                .getElementById("volunteerForm")
+                .reset();
+
+
+        });
+
+
+</script>
+
+
+</body>
+
+</html>
