@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wildlife Conservation - AngularJS</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #edf3e8;
+            margin: 20px;
+        }
+
+        h1 {
+            background-color: darkgreen;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        h2 {
+            color: darkgreen;
+        }
+
+        .box {
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            border: 1px solid #ccc;
+        }
+
+        input, select {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            background-color: #28734b;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        li {
+            padding: 8px;
+        }
+
+        .delete {
+            background-color: red;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+
+<body ng-app="wildlifeApp">
+
+    <h1>WILDLIFE CONSERVATION</h1>
+
+    <center>
+        <p>Protect Animals | Save Forests | Preserve Nature</p>
+    </center>
+
+
+    <!-- 1. COMMENT BOX -->
+
+    <div class="box" ng-controller="CommentController">
+
+        <h2>1. Wildlife Comment Box</h2>
+
+        <h3>Post Your Comment</h3>
+
+        <textarea ng-model="txtcomment"
+                  placeholder="Your Comment"
+                  rows="4"
+                  cols="50"></textarea>
+
+        <br><br>
+
+        <button ng-click="addComment()">Post Comment</button>
+
+        <h3>Comments</h3>
+
+        <ul>
+            <li ng-repeat="c in comments track by $index">
+                {{c}}
+
+                <button class="delete"
+                        ng-click="removeComment($index)">
+                    Delete
+                </button>
+            </li>
+        </ul>
+
+    </div>
+
+
+    <!-- 2. CALCULATOR -->
+
+    <div class="box" ng-controller="CalculatorController">
+
+        <h2>2. Wildlife Conservation Calculator</h2>
+
+        <p>Enter First Amount:</p>
+
+        <input type="number" ng-model="a">
+
+        <p>Enter Second Amount:</p>
+
+        <input type="number" ng-model="b">
+
+        <p>Select Operation:</p>
+
+        <select ng-model="operator">
+            <option value="+">Addition (+)</option>
+            <option value="-">Subtraction (-)</option>
+            <option value="*">Multiplication (*)</option>
+            <option value="/">Division (/)</option>
+        </select>
+
+        <h3>Result: {{calculate()}}</h3>
+
+    </div>
+
+
+    <!-- 3. TODO LIST -->
+
+    <div class="box" ng-controller="TodoController">
+
+        <h2>3. Wildlife Conservation To-Do List</h2>
+
+        <p>Enter a Conservation Activity:</p>
+
+        <input type="text"
+               ng-model="title"
+               placeholder="Enter Activity">
+
+        <button ng-click="add()">Add</button>
+
+        <h3>Activities</h3>
+
+        <ul>
+            <li ng-repeat="t in tasks track by $index">
+                {{t}}
+
+                <button class="delete"
+                        ng-click="remove($index)">
+                    Delete
+                </button>
+            </li>
+        </ul>
+
+    </div>
+
+
+    <script>
+
+    // COMMENT BOX CONTROLLER
+
+    var app = angular.module("wildlifeApp", []);
+
+    app.controller("CommentController", function($scope) {
+
+        $scope.comments = [];
+
+        $scope.addComment = function() {
+
+            if($scope.txtcomment) {
+
+                $scope.comments.push($scope.txtcomment);
+
+                $scope.txtcomment = "";
+
+            }
+
+        };
+
+        $scope.removeComment = function(index) {
+
+            $scope.comments.splice(index, 1);
+
+        };
+
+    });
+
+
+    // CALCULATOR CONTROLLER
+
+    app.controller("CalculatorController", function($scope) {
+
+        $scope.calculate = function() {
+
+            if($scope.a === undefined ||
+               $scope.b === undefined ||
+               !$scope.operator) {
+                return 0;
+            }
+
+            if($scope.operator == "+") {
+                return $scope.a + $scope.b;
+            }
+
+            if($scope.operator == "-") {
+                return $scope.a - $scope.b;
+            }
+
+            if($scope.operator == "*") {
+                return $scope.a * $scope.b;
+            }
+
+            if($scope.operator == "/") {
+
+                if($scope.b == 0) {
+                    return "Cannot divide by zero";
+                }
+
+                return $scope.a / $scope.b;
+            }
+
+        };
+
+    });
+
+
+    // TODO LIST CONTROLLER
+
+    app.controller("TodoController", function($scope) {
+
+        $scope.tasks = [
+            "Plant Trees",
+            "Protect Wild Animals"
+        ];
+
+        $scope.add = function() {
+
+            if($scope.title) {
+
+                $scope.tasks.push($scope.title);
+
+                $scope.title = "";
+
+            }
+
+        };
+
+        $scope.remove = function(index) {
+
+            $scope.tasks.splice(index, 1);
+
+        };
+
+    });
+
+    </script>
+
+</body>
+</html>
