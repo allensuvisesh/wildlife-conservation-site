@@ -1,0 +1,515 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wildlife Conservation</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    background: #edf3e8;
+    color: #263b2c;
+}
+
+header {
+    background: #173d2b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background: #285c40;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+    font-weight: bold;
+}
+
+.hero {
+    height: 450px;
+    background:
+    linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+    url("https://images.unsplash.com/photo-1511497584788-876760111969?w=1400");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 45px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin: 15px;
+}
+
+section {
+    padding: 40px 7%;
+    text-align: center;
+}
+
+h2 {
+    color: #1b4332;
+    margin-bottom: 20px;
+}
+
+button {
+    background: #28734b;
+    color: white;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #173d2b;
+}
+
+#clock {
+    font-size: 30px;
+    color: #28734b;
+}
+
+.animal-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px #aaa;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card h3 {
+    padding: 12px;
+    color: #1b4332;
+}
+
+.card p {
+    padding: 10px;
+}
+
+#para {
+    font-size: 18px;
+    line-height: 1.8;
+    cursor: pointer;
+}
+
+#tiger {
+    width: 180px;
+    position: relative;
+    left: 0px;
+}
+
+.programs {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.programs img {
+    width: 280px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+footer {
+    background: #173d2b;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+@media(max-width: 800px) {
+    .animal-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 500px) {
+    .animal-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>WILDLIFE CONSERVATION</h1>
+    <p>Protect Animals | Save Forests | Preserve Nature</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#clock-section">Clock</a>
+    <a href="#animals">Animals</a>
+    <a href="#programs">Programs</a>
+    <a href="#records">Records</a>
+</nav>
+
+<!-- HOME -->
+
+<div class="hero" id="home">
+    <div>
+        <h1>Save Wildlife, Save Our Planet</h1>
+        <p>Protecting Nature for Future Generations</p>
+        <button onclick="location.href='#animals'">
+            Explore Animals
+        </button>
+    </div>
+</div>
+
+<!-- Q1 DIGITAL CLOCK -->
+
+<section id="clock-section">
+
+    <h2>Wildlife Digital Clock</h2>
+
+    <img src="https://images.unsplash.com/photo-1473445361085-b9a07f55608b?w=700"
+    width="300" height="150" style="object-fit:cover;border-radius:10px;">
+
+    <h3 id="clock"></h3>
+
+</section>
+
+<!-- Q2 BACKGROUND COLOR -->
+
+<section>
+
+    <h2>Protect Our Forests</h2>
+
+    <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=800"
+    width="350" height="180" style="object-fit:cover;border-radius:10px;">
+
+    <p>Forests are the natural homes of wildlife.</p>
+
+    <button onclick="changeColor()">
+        Change Background Colour
+    </button>
+
+</section>
+
+<!-- Q3 MOUSE EVENTS -->
+
+<section>
+
+    <h2>Importance of Wildlife</h2>
+
+    <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=800"
+    width="350" height="180" style="object-fit:cover;border-radius:10px;">
+
+    <p id="para"
+    onmouseover="increaseSize()"
+    onmouseout="decreaseSize()">
+
+    Wildlife conservation protects animals, plants and
+    forests. Every living creature plays an important
+    role in maintaining the balance of nature.
+    Move your mouse over this paragraph!
+
+    </p>
+
+</section>
+
+<!-- Q4 MOVE TIGER -->
+
+<section>
+
+    <h2>Moving Tiger Image</h2>
+
+    <img id="tiger"
+    src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=500"
+    alt="Tiger">
+
+    <br>
+
+    <button onclick="moveTiger()">Move Tiger</button>
+
+    <button onclick="stopTiger()">Stop Tiger</button>
+
+</section>
+
+<!-- ANIMAL GALLERY -->
+
+<section id="animals">
+
+    <h2>Featured Wildlife Animals</h2>
+
+    <div class="animal-container">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=500" alt="Tiger">
+            <h3>Bengal Tiger</h3>
+            <p>Protect tigers and their forest habitats.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=500" alt="Elephant">
+            <h3>Asian Elephant</h3>
+            <p>Protect elephants from habitat destruction.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1d2b?w=500" alt="Panda">
+            <h3>Giant Panda</h3>
+            <p>Preserve bamboo forests for pandas.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=500" alt="Lion">
+            <h3>African Lion</h3>
+            <p>Protect lions and their natural habitats.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONSERVATION PROGRAMS -->
+
+<section id="programs">
+
+    <h2>Conservation Programs</h2>
+
+    <div class="programs">
+
+        <div>
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500" alt="Forest">
+            <h3>Forest Protection</h3>
+        </div>
+
+        <div>
+            <img src="https://images.unsplash.com/photo-1535338454770-8be927b5a00b?w=500" alt="Wildlife">
+            <h3>Animal Protection</h3>
+        </div>
+
+        <div>
+            <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=500" alt="Deer">
+            <h3>Wildlife Awareness</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Q5 ARRAY -->
+
+<section id="records">
+
+    <h2>Wildlife Animal Records</h2>
+
+    <img src="https://images.unsplash.com/photo-1473445361085-b9a07f55608b?w=700"
+    width="300" height="150" style="object-fit:cover;border-radius:10px;">
+
+    <br>
+
+    <button onclick="displayAnimals()">
+        Display Animal Records
+    </button>
+
+    <div id="result"></div>
+
+</section>
+
+<footer>
+    <h3>Wildlife Conservation</h3>
+    <p>Protect Wildlife | Save Nature | Build a Better Future</p>
+    <p>© 2026 Wildlife Conservation</p>
+</footer>
+
+
+<script>
+
+// Q1 DIGITAL CLOCK
+
+function showTime() {
+
+    var d = new Date();
+
+    var h = d.getHours();
+    var m = d.getMinutes();
+    var s = d.getSeconds();
+
+    document.getElementById("clock").innerHTML =
+    h + ":" + m + ":" + s;
+
+}
+
+showTime();
+
+setInterval(showTime, 1000);
+
+
+// Q2 CHANGE BACKGROUND COLOR
+
+function changeColor() {
+
+    var r = Math.floor(Math.random() * 255);
+    var g = Math.floor(Math.random() * 255);
+    var b = Math.floor(Math.random() * 255);
+
+    document.body.style.backgroundColor =
+    "rgb(" + r + "," + g + "," + b + ")";
+
+}
+
+
+// Q3 MOUSE EVENTS
+
+function increaseSize() {
+
+    document.getElementById("para").style.fontSize = "28px";
+
+}
+
+function decreaseSize() {
+
+    document.getElementById("para").style.fontSize = "18px";
+
+}
+
+
+// Q4 MOVE TIGER
+
+var timer;
+
+function moveTiger() {
+
+    var tiger = document.getElementById("tiger");
+
+    clearInterval(timer);
+
+    timer = setInterval(function() {
+
+        var position = parseInt(tiger.style.left) || 0;
+
+        if(position >= 400) {
+            clearInterval(timer);
+        }
+        else {
+            tiger.style.left = position + 5 + "px";
+        }
+
+    }, 50);
+
+}
+
+function stopTiger() {
+
+    clearInterval(timer);
+
+}
+
+
+// Q5 ARRAY OF OBJECTS
+
+var animals = [
+
+    {
+        name: "Tiger",
+        species: "Bengal Tiger",
+        year: 1973,
+        image: "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=500"
+    },
+
+    {
+        name: "Elephant",
+        species: "Asian Elephant",
+        year: 1992,
+        image: "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=500"
+    },
+
+    {
+        name: "Panda",
+        species: "Giant Panda",
+        year: 2016,
+        image: "https://images.unsplash.com/photo-1564349683136-77e08dba1d2b?w=500"
+    },
+
+    {
+        name: "Lion",
+        species: "African Lion",
+        year: 2005,
+        image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=500"
+    }
+
+];
+
+function displayAnimals() {
+
+    var output = "";
+
+    for(var i = 0; i < animals.length; i++) {
+
+        output += "<h3>" + animals[i].name + "</h3>";
+
+        output += "<img src='" + animals[i].image + "' alt='" + animals[i].name +
+        "' width='200' height='130' style='object-fit:cover;border-radius:8px;margin:8px 0;'><br>";
+
+        output += "Species: " + animals[i].species + "<br>";
+
+        output += "Year: " + animals[i].year + "<br>";
+
+        if(animals[i].year < 2000) {
+
+            output += "Category: Before 2000";
+
+        }
+        else {
+
+            output += "Category: After 2000";
+
+        }
+
+        output += "<hr>";
+
+    }
+
+    document.getElementById("result").innerHTML = output;
+
+}
+
+</script>
+
+</body>
+</html>
