@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html ng-app="wildlifeApp">
+<head>
+    <title>Wildlife Conservation Site</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f1f8e9;
+        }
+
+        header {
+            background-color: darkgreen;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #2e7d32;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: yellow;
+        }
+
+        .content {
+            padding: 25px;
+            text-align: center;
+            min-height: 350px;
+        }
+
+        img {
+            width: 300px;
+            height: 190px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 8px;
+        }
+
+        form {
+            width: 300px;
+            margin: auto;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 9px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: darkgreen;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: darkgreen;
+            color: white;
+            text-align: center;
+            padding: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Wildlife Conservation</h1>
+    <p>Protect Nature, Save Wildlife</p>
+</header>
+
+<nav>
+    <a href="#!/">Home</a>
+    <a href="#!/about">About Us</a>
+    <a href="#!/wildlife">Wildlife</a>
+    <a href="#!/volunteer">Volunteer</a>
+</nav>
+
+<div ng-view class="content"></div>
+
+<footer>
+    <p>Wildlife Conservation Website | Save Animals, Save Nature</p>
+</footer>
+
+<script>
+    var app = angular.module("wildlifeApp", ["ngRoute"]);
+
+    app.config(function($routeProvider) {
+        $routeProvider
+        .when("/", {
+            templateUrl: "home.html"
+        })
+        .when("/about", {
+            templateUrl: "about.html"
+        })
+        .when("/wildlife", {
+            templateUrl: "wildlife-page.html"
+        })
+        .when("/volunteer", {
+            templateUrl: "volunteer.html",
+            controller: "VolunteerController"
+        })
+        .otherwise({
+            redirectTo: "/"
+        });
+    });
+
+    app.controller("VolunteerController", function($scope) {
+        $scope.register = function() {
+            $scope.message = "Thank you for registering as a volunteer!";
+        };
+    });
+</script>
+
+<!-- HOME PAGE -->
+<script type="text/ng-template" id="home.html">
+    <h2>Welcome to Wildlife Conservation</h2>
+    <p>
+        Wildlife conservation helps protect animals, birds,
+        forests and their natural habitats.
+    </p>
+
+    <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=600">
+
+    <p>Join us to protect wildlife and save our environment.</p>
+</script>
+
+<!-- ABOUT PAGE -->
+<script type="text/ng-template" id="about.html">
+    <h2>About Us</h2>
+
+    <p>
+        Our mission is to protect endangered animals and
+        preserve natural habitats for future generations.
+    </p>
+
+    <p>
+        We create awareness about wildlife protection,
+        forest conservation and environmental safety.
+    </p>
+
+    <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=600">
+</script>
+
+<!-- WILDLIFE PAGE -->
+<script type="text/ng-template" id="wildlife-page.html">
+    <h2>Our Wildlife</h2>
+
+    <p>Learn about some of the beautiful animals in nature.</p>
+
+    <div>
+        <h3>Tiger</h3>
+        <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=600">
+        <p>Tigers are endangered animals that need protection.</p>
+
+        <h3>Elephant</h3>
+        <img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?w=600">
+        <p>Elephants play an important role in maintaining ecosystems.</p>
+    </div>
+</script>
+
+<!-- VOLUNTEER PAGE -->
+<script type="text/ng-template" id="volunteer.html">
+    <h2>Volunteer Registration</h2>
+
+    <p>Register to support wildlife conservation activities.</p>
+
+    <form ng-submit="register()">
+        <label>Name:</label>
+        <input type="text" ng-model="name" required>
+
+        <label>Email:</label>
+        <input type="email" ng-model="email" required>
+
+        <label>Mobile Number:</label>
+        <input type="tel" ng-model="mobile" required>
+
+        <label>State:</label>
+        <select ng-model="state" required>
+            <option value="">Select State</option>
+            <option>Tamil Nadu</option>
+            <option>Kerala</option>
+            <option>Karnataka</option>
+            <option>Other</option>
+        </select>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <h3>{{message}}</h3>
+</script>
+
+</body>
+</html>
