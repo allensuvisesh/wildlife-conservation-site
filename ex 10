@@ -1,0 +1,221 @@
+
+require('dotenv').config();
+
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const { MongoClient } = require('mongodb');
+
+// MongoDB connection
+const client = new MongoClient(process.env.MONGODB_URI);
+
+const PORT = process.env.PORT || 6000;
+
+// Function to serve HTML and CSS files
+function serveFile(res, fileName, contentType) {
+    fs.readFile(path.join(__dirname, fileName), (err, data) => {
+        if (err) {
+            res.writeHead(500);
+            res.end('File not found');
+            return;
+        }
+
+        res.writeHead(200, { 'Content-Type': contentType });
+        res.end(data);
+    });
+}
+
+// Escape HTML to prevent unsafe user input
+function escapeHTML(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    })[char]);
+}
+
+// Create server
+const server = http.createServer((req, res) => {
+
+    // Open home page
+    if (req.method === 'GET' && req.url === '/') {
+        serveFile(res, 'home.html', 'text/html');
+    }
+
+    // Load CSS
+    else if (req.method === 'GET' && req.url === '/style.css') {
+        serveFile(res, 'style.css', 'text/css');
+    }
+
+    // Handle volunteer registration
+    else if (req.method === 'POST' && req.url === '/server') {
+
+        let data = '';
+
+        req.on('data', chunk => {
+            data += chunk;
+        });
+
+        req.on('end', async () => {
+
+            try {
+                const formData = new URLSearchParams(data);
+
+                const volunteer = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    age: Number(formData.get('age')),
+                    gender: formData.get('gender'),
+                    location: formData.get('location'),
+                    interest: formData.get('interest')
+                };
+
+                // Connect to MongoDB database
+                const db = client.db(process.env.DB_NAME);
+                const collection = db.collection(process.env.COLLECTION_NAME);
+
+                // Save volunteer details
+                await collection.insertOne(volunteer);
+
+                // Get all volunteer records
+                const volunteers = await collection.find().toArray();
+
+                // Create table rows
+                let rows = '';
+
+                volunteers.forEach((v, i) => {
+                    rows += `
+                    <tr>
+                        <td>${i + 1}</td>
+                        <td>${escapeHTML(v.name)}</td>
+                        <td>${escapeHTML(v.email)}</td>
+                        <td>${escapeHTML(v.phone)}</td>
+                        <td>${escapeHTML(v.age)}</td>
+                        <td>${escapeHTML(v.gender)}</td>
+                        <td>${escapeHTML(v.location)}</td>
+                        <td>${escapeHTML(v.interest)}</td>
+                    </tr>`;
+                });
+
+                // Display registered volunteers
+                res.writeHead(200, {
+                    'Content-Type': 'text/html'
+                });
+
+                res.end(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Volunteer Registrations</title>
+
+                    <style>
+                        body {
+                            font-family: Arial;
+                            background: #f1f5ed;
+                            padding: 25px;
+                            color: #344b35;
+                        }
+
+                        h2 {
+                            text-align: center;
+                        }
+
+                        .table-container {
+                            overflow-x: auto;
+                        }
+
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            background: white;
+                        }
+
+                        th, td {
+                            border: 1px solid #ccc;
+                            padding: 10px;
+                            text-align: left;
+                        }
+
+                        th {
+                            background: #315c3b;
+                            color: white;
+                        }
+
+                        a {
+                            display: inline-block;
+                            margin-top: 20px;
+                            color: #315c3b;
+                        }
+                    </style>
+                </head>
+
+                <body>
+
+                    <h2>Wildlife Conservation Volunteers</h2>
+
+                    <p>Volunteer registration saved successfully!</p>
+
+                    <div class="table-container">
+                        <table>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Location</th>
+                                <th>Area of Interest</th>
+                            </tr>
+
+                            ${rows}
+
+                        </table>
+                    </div>
+
+                    <a href="/">Back to Registration</a>
+
+                </body>
+                </html>
+                `);
+
+            } catch (error) {
+                console.log(error);
+
+                res.writeHead(500, {
+                    'Content-Type': 'text/plain'
+                });
+
+                res.end('Error saving volunteer details');
+            }
+        });
+    }
+
+    else {
+        res.writeHead(404);
+        res.end('Page Not Found');
+    }
+});
+
+// Start server
+async function startServer() {
+
+    try {
+        await client.connect();
+
+        console.log('MongoDB Connected Successfully!');
+
+        server.listen(PORT, () => {
+            console.log(`Wildlife Conservation server running at http://localhost:${PORT}`);
+        });
+
+    } catch (error) {
+        console.log('MongoDB Connection Failed!');
+        console.log(error.message);
+    }
+}
+
+startServer();
